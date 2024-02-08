@@ -14,20 +14,25 @@
 
 
 int main(void) {
+
+
     DDRC = 0xFF;  				  // Set all pins of port C as outputs.
     DDRD &= ~(1 << PD6); 		 // Set pin PD2 as input (button).
 
     uint8_t a = 1; 			   // Variable controlling LEDs (set to 1 to initially turn off the LEDs).
     uint8_t buttonState = 1;  // Button state (1 means not pressed).
 
+    PORTD |= (1<<PD6);   		// Turn ON internal pull-up - push to VCC
+
     while (1) {
 
         uint8_t currentButtonState = PIND & (1 << PD6);	 // Read the state of the button.
-
+        _delay_ms(100);									// the delay (debouncing).
 
         if (!currentButtonState && buttonState) {	  // If the button is pressed, and in the previous iteration it was not pressed.
-            a = !a; 								 // Change the state of variable 'a'.
-            _delay_ms(100);  					    // the delay (debouncing).
+
+        	a = !a; 							    // Change the state of variable 'a'.
+
         }
 
 
@@ -39,5 +44,8 @@ int main(void) {
 
     return 0;
 }
+
+
+
 
 

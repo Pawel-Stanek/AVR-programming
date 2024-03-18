@@ -9,3 +9,6 @@ Connected 10 LEDs to a breadboard with their cathodes linked to the microcontrol
 
 example_3:
 Connected 8 LEDs to port C, the button to port D, control (toggle) using the button.
+
+example_4:
+Ip address assignment exercises using pointers and arrays. RS232 used and printf function.
